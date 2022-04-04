@@ -144,3 +144,108 @@
 </html>
 ```
 
+## 1.4 声明式与命令式
+
+命令式编程：关注的是【how to do】
+
+声明式编程：关注的是【what to do】，由框架（机器）完成【how】的过程
+
+## 1.5 MVC与MVVM
+
+MVC：Model-View-Controller
+
+MVVM：Model-View-ViewModel
+
+![](https://raw.githubusercontent.com/leslieXin92/picGo/master/img/202204041818962.png)
+
+## 1.6 template写法
+
+写法一：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>template写法一</title>
+	</head>
+
+	<body>
+		<div id="app"></div>
+	</body>
+
+	<script src="https://unpkg.com/vue@next"></script>
+
+	<script type="x-template" id="template">
+		<div> {{num}} </div>
+		<button @click='increment'> + </button>
+		<button @click='decrement'> - </button>
+	</script>
+
+	<script>
+		const app = Vue.createApp({
+			template: `#template`,
+			data() {
+				return {
+					num: 100,
+				}
+			},
+			methods: {
+				increment() {
+					this.num++
+				},
+				decrement() {
+					this.num--
+				},
+			},
+		}).mount('#app')
+	</script>
+</html>
+```
+
+写法二：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>template写法二</title>
+	</head>
+
+	<body>
+		<div id="app"></div>
+		<template id="template">
+			<div>{{num}}</div>
+			<button @click="increment">+</button>
+			<button @click="decrement">-</button>
+		</template>
+	</body>
+
+	<script src="https://unpkg.com/vue@next"></script>
+
+	<script>
+		const app = Vue.createApp({
+			template: `#template`,
+			data() {
+				return {
+					num: 100,
+				}
+			},
+			methods: {
+				increment() {
+					this.num++
+				},
+				decrement() {
+					this.num--
+				},
+			},
+		}).mount('#app')
+	</script>
+</html>
+```
+
