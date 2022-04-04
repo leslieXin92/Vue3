@@ -158,7 +158,7 @@ MVVM：Model-View-ViewModel
 
 ![](https://raw.githubusercontent.com/leslieXin92/picGo/master/img/202204041818962.png)
 
-## 1.6 template写法
+## 1.6 template属性
 
 写法一：
 
@@ -249,3 +249,10 @@ MVVM：Model-View-ViewModel
 </html>
 ```
 
+## 1.7 data属性
+
+在 Vue2 中，data 属性可以是传入一个函数，也可以是一个对象
+
+在 Vue3 中，data属性必须是传入一个函数
+
+data 中返回的对象会被【Vue 的响应式系统】劫持，之后对该对象的修改或者访问都会在劫持中被处理。
