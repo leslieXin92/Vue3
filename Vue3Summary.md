@@ -36,7 +36,7 @@
 
 ## 1.2  hello world
 
-```vue
+```html
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -54,6 +54,91 @@
 	<script>
 		const app = Vue.createApp({
 			template: '<h1> hello world </h1>',
+		}).mount('#app')
+	</script>
+</html>
+```
+
+## 1.3 counter案例
+
+### 1.3.1 原生
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<div class="counter">1</div>
+		<button class="increment">+</button>
+		<button class="decrement">-</button>
+	</body>
+
+	<script>
+		// 1.获取元素
+		const counterEl = document.querySelector('.counter')
+		const incrementEl = document.querySelector('.increment')
+		const decrementEl = document.querySelector('.decrement')
+
+		// 2.定义变量
+		let num = 100
+		counterEl.innerHTML = num
+
+		// 3.监听事件
+		incrementEl.addEventListener('click', () => {
+			num += 1
+			counterEl.innerHTML = num
+		})
+		decrementEl.addEventListener('click', () => {
+			num -= 1
+			counterEl.innerHTML = num
+		})
+	</script>
+</html>
+```
+
+### 1.3.2 Vue语法
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<div id="app"></div>
+	</body>
+
+	<script src="https://unpkg.com/vue@next"></script>
+	<script>
+		const app = Vue.createApp({
+			template: `
+                <div> {{num}} </div>
+                <button @click='increment'> + </button>
+                <button @click='decrement'> - </button>
+            `,
+			data() {
+				return {
+					num: 100,
+				}
+			},
+			methods: {
+				increment() {
+					this.num++
+				},
+				decrement() {
+					this.num--
+				},
+			},
 		}).mount('#app')
 	</script>
 </html>
