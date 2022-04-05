@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>title</title>
+		<style>
+			.active {
+				background-color: aqua;
+				color: brown;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="app"></div>
+		<template id="template">
+			<!--! v-bind基本使用 -->
+			<!-- 语法糖为 【v-bind:】 => 【:】 -->
+			<div>
+				<img v-bind:src="imgUrl" />
+				<a v-bind:href="webUrl"> skip to baidu </a>
+				<a :href="webUrl"> skip to baidu </a>
+			</div>
+
+			<!--! v-bind绑定class —— 对象语法 -->
+			<div>
+				<div :class="{active:isActive}">yahoo</div>
+				<button @click="isActive = !isActive">change class</button>
+			</div>
+
+			<!--! v-bind绑定class —— 数组语法 -->
+			<div>
+				<div :class="[{active:isActive}]">yahoo</div>
+				<button @click="isActive = !isActive">change class</button>
+			</div>
+
+			<!--! v-bind绑定style —— 对象语法 -->
+			<div>
+				<div
+					:style="{backgroundColor:finalColor, 'font-size':finalFontSize+'px'}"
+				>
+					yahoo
+				</div>
+			</div>
+
+			<!--! v-bind绑定style —— 数组语法 -->
+			<div>
+				<div :style="[styleObj1,styleObj2]">yahoo</div>
+			</div>
+
+			<!--! v-bind绑定属性名称 -->
+			<div>
+				<h2 :attrName="attrVal">yahoo</h2>
+			</div>
+
+			<!-- v-bind绑定一个对象 -->
+			<div>
+				<h2 v-bind="person">giao</h2>
+			</div>
+		</template>
+	</body>
+
+	<script src="https://unpkg.com/vue@next"></script>
+
+	<script>
+		const app = Vue.createApp({
+			template: `#template`,
+			data() {
+				return {
+					imgUrl: 'https://avatars.githubusercontent.com/u/91523639?v=4',
+					webUrl: 'https://www.baidu.com',
+					isActive: true,
+					finalColor: 'red',
+					finalFontSize: '30',
+					styleObj1: {
+						backgroundColor: 'aqua',
+					},
+					styleObj2: {
+						'font-size': '30px',
+					},
+					attrVal: 'yahoo',
+					person: {
+						name: 'yahoo',
+						age: '23',
+						sex: 'boy',
+					},
+				}
+			},
+			methods: {},
+		}).mount('#app')
+	</script>
+</html>
