@@ -157,3 +157,10 @@ Vite 官网：https://vitejs.cn
     1.  接收的数据可以是基本类型，也可以是对象类型。
     2.  基本类型的数据，响应式应然是靠 Object.defineProperty() 的 get 与 set 完成的。
     3.  对象类型的数据，内部求救 Vue3 中的新函数——reactive 函数。
+
+## 3.3 reactive
+
+1.  作用：定义一个对象类型的响应式数据 ( 基本类型不要用它，要用ref )。
+2.  语法：const 代理对象 = reactive ( 源对象 )，返回一个代理对象 ( Proxy代理对象 )。
+3.  reactive 定义的响应式数据是【深层次】的。
+4.  内部基于 ES6 的 Proxy 实现，通过代理对象操作源对象内部数据进行操作。

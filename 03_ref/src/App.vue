@@ -5,7 +5,7 @@
     <h2>job：{{ job.type }}</h2>
     <h2>salary：{{ job.salary }}</h2>
     <button @click="incrementAge"> age++ </button>
-    <button @click="incrementSalary"> age++ </button>
+    <button @click="incrementSalary"> salary++ </button>
 </template>
 
 <script>
