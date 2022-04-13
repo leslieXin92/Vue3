@@ -8,6 +8,7 @@
 <script>
 export default {
     name: 'App',
+    // 只是测试一下setup，暂时不考虑响应式问题
     setup () {
         // 数据
         const name = 'yahoo'

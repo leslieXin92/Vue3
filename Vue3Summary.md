@@ -127,3 +127,33 @@ Vite 官网：https://vitejs.cn
         -   但在 setup 中不能访问到 Vue2 配置 ( data、methods、computed )。
         -   如果有重名，setup 优先。
     2.  setup 不能是一个 async 函数，因为返回值不再是 return 的对象，而是 promise，模板看不到 return 对象中的属性。
+
+## 3.2 ref
+
+1.  作用：定义一个响应式的数据
+
+2.  语法：
+
+    1.  创建一个包含响应式数据的引用对象 ( reference对象 )。
+
+        ```javascript
+        const xxx = ref(initValue)
+        ```
+
+    2.  JS 中操作数据：
+
+        ```javascript
+        xxx.value
+        ```
+
+    3.  模板中读取数据：
+
+        ```html
+        <div> {{xxx}} </div> 
+        ```
+
+3.  tips：
+
+    1.  接收的数据可以是基本类型，也可以是对象类型。
+    2.  基本类型的数据，响应式应然是靠 Object.defineProperty() 的 get 与 set 完成的。
+    3.  对象类型的数据，内部求救 Vue3 中的新函数——reactive 函数。
