@@ -108,5 +108,22 @@ Vite 官网：https://vitejs.cn
     npm run dev
     ```
 
-    
 
+
+
+# 三、常用Composition API
+
+## 3.1 setup
+
+1.  理解：Vue3 中一个新的配置项，值为一个函数。
+2.  setup 是所有 Composition API ( 组合式 API )。
+3.  组件中所用到的数据、方法等，都要配置在 setup。
+4.  setup 函数的两种返回值：
+    1.  若要返回一个对象，则对象中的属性、方法，在模板中均可以直接使用！！！
+    2.  若返回一个渲染函数，则可以自定义渲染内容。
+5.  tips：
+    1.  尽量不要在 Vue2 配置混用：
+        -   Vue2 配置 ( data、methods、computed…… ) 中可以访问到 setup 中的属性、方法。
+        -   但在 setup 中不能访问到 Vue2 配置 ( data、methods、computed )。
+        -   如果有重名，setup 优先。
+    2.  setup 不能是一个 async 函数，因为返回值不再是 return 的对象，而是 promise，模板看不到 return 对象中的属性。

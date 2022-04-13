@@ -1,16 +1,16 @@
 <template>
     <!-- 可以有多个根标签 -->
     <img src="./assets/logo.png" />
-    <HelloWorld msg="hello yahoo" />
+    <div>{{ msg }}</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
     name: 'App',
-    components: {
-        HelloWorld,
+    data () {
+        return {
+            msg: 'hello yahoo'
+        }
     },
 }
 </script>
@@ -19,5 +19,9 @@ export default {
 .img {
     width: 100px;
     height: 100px;
+}
+
+div {
+    font-size: 40px;
 }
 </style>
