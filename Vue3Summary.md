@@ -164,3 +164,74 @@ Vite 官网：https://vitejs.cn
 2.  语法：const 代理对象 = reactive ( 源对象 )，返回一个代理对象 ( Proxy代理对象 )。
 3.  reactive 定义的响应式数据是【深层次】的。
 4.  内部基于 ES6 的 Proxy 实现，通过代理对象操作源对象内部数据进行操作。
+
+## 3.4 Vue的响应式原理
+
+### 3.4.1 Vue2的响应式
+
+-   实现原理：
+
+    -   对象类型：通过 Object.defineProperty() 对属性的读取、修改进行拦截 ( 数据劫持 )。
+
+    -   数组类型：通过重写更新数组的·一系列方法来实现拦截 ( 对数组的变更方法进行了包裹 )。
+
+        ```javascript
+        Object.defineProperty(data, 'count', {
+            get() {},
+            set() {}
+        })
+        ```
+
+-   存在问题：
+
+    -   新增属性、删除属性，页面不会更新。
+    -   直接通过下标修改数组，页面不会更新。
+
+-   解决方案：
+
+    ```javascript
+    // 新增属性
+    this.$set(this.person, 'name', 'yahoo')
+    Vue.set(this.person, 'name', 'yahoo')
+    
+    // 删除属性
+    this.$delete(this.person, 'sex')
+    Vue.delete(this.person, 'sex')
+    
+    // 数组变更
+    this.$set(this.person, hobbies, 0, 'study')
+    Vue.set(this.person, hobbies, 0, 'study')
+    this.person.hobbies.splice(0, 1, 'study')
+    ```
+
+### 3.4.2 Vue3的响应式
+
+-   实现原理：
+
+    -   通过 Proxy ( 代理 )：拦截对象中任意属性的变化，包括属性值的读写，属性的增删等。<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy" style="text-decoration:none;"> Proxy </a>
+    -   通过 Reflect ( 反射 )：反被代理对象的属性进行操作。<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect" style="text-decoration:none;"> Reflect </a>
+
+-   code：
+
+    ```javascript
+    new Proxy(person, {
+        // 查
+        get(target, propName) {
+            console.log(`somebody is reading ${propName}`)
+            return target[propName]
+        },
+        // 改/增
+        set(target, propName, newVal) {
+            console.log(`somebody is changing ${propName}`)
+            target[propName] = newVal
+        },
+        // 删
+        deleteProperty(target, propName) {
+            console.log(`somebody is deleting ${propName}`)
+            return delete target[propName]
+        },
+    })
+    ```
+
+    
+
