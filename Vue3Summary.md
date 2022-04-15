@@ -233,5 +233,27 @@ Vite 官网：https://vitejs.cn
     })
     ```
 
-    
+
+## 3.5 ref与reactive对比
+
+1.  从定义数据角度对比：
+    -   ref 用来定义：基本数据类型。
+    -   reactive用来定义：对象或数组类型数据。
+    -   tips：ref 也可以用来定义对象或数组类型数据，它内部会自动通过 reactive 转为代理对象。
+2.  从原理角度对比：
+    -   ref 通过 Object.defineProperty() 的 get 与 set 来实现响应式 ( 数据劫持 )。
+    -   reactive 通过使用 Proxy 来实现响应式 ( 数据劫持 )，并通过 Reflect 操作源对象内部的数据。
+3.  从使用角度对比：
+    -   ref 定义的数据：操作数据需要 .value ，读取数据时模板中直接读取，不需要 .value。
+    -   reactive 定义的数据：操作数据与读取数据都不需要 .value。
+
+## 3.6 setup两个注意点
+
+1.  setup 执行的时机：在 beforeCreate 之前执行一次，this 是 undefined。
+2.  setup 的参数：
+    1.  props：值为对象，包含组件外部传递过来且内部声明接受了的属性。
+    2.  context：上下文对象
+        -   attrs：值为对象，包含组件外部传递过来但没有在 props 配置中声明的属性，相当于 this.$attrs。
+        -   slots：收到的插槽内容，相当于 this.$slots。
+        -   emit：分发自定义事件的函数，相当于 this.$emit。
 
