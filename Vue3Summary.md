@@ -257,3 +257,55 @@ Vite 官网：https://vitejs.cn
         -   slots：收到的插槽内容，相当于 this.$slots。
         -   emit：分发自定义事件的函数，相当于 this.$emit。
 
+## 3.7 computed
+
+1.  与 Vue2 中的 computed 配置功能一致。
+
+2.  写法：
+
+    ```vue
+    <template>
+        <h1>{{ msg }}</h1>
+        firstName：<input type="text" v-model="person.firstName" />
+        <br />
+        lastName：<input type="text" v-model="person.lastName" />
+        <br />
+        fullName：<input type="text" v-model="person.fullName" />
+    </template>
+    
+    <script>
+    import { reactive, computed } from 'vue'
+    
+    export default {
+        name: 'Info',
+        props: ['msg'],
+        setup () {
+            let person = reactive({
+                firstName: 'firstName',
+                lastName: 'lastName',
+                age: 23
+            })
+            // 计算属性简写形式 —— 不考虑计算属性被修改的情况
+            person.fullName = computed(() => {
+                return `${person.firstName}-${person.lastName}`
+            })
+    
+            // 计算属性完整写法
+            person.fullName = computed({
+                get () {
+                    return `${person.firstName}-${person.lastName}`
+                },
+                set (newVal) {
+                    const newNameArr = newVal.split('-')
+                    person.firstName = newNameArr[0]
+                    person.lastName = newNameArr[1]
+                }
+            })
+            return { person }
+        }
+    }
+    </script>
+    ```
+
+    
+
