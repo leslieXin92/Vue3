@@ -263,49 +263,65 @@ Vite 官网：https://vitejs.cn
 
 2.  写法：
 
-    ```vue
-    <template>
-        <h1>{{ msg }}</h1>
-        firstName：<input type="text" v-model="person.firstName" />
-        <br />
-        lastName：<input type="text" v-model="person.lastName" />
-        <br />
-        fullName：<input type="text" v-model="person.fullName" />
-    </template>
+    ```javascript
+    // 计算属性简写形式 —— 不考虑计算属性被修改的情况
+    person.fullName = computed(() => {
+        return `${person.firstName}-${person.lastName}`
+    })
     
-    <script>
-    import { reactive, computed } from 'vue'
-    
-    export default {
-        name: 'Info',
-        props: ['msg'],
-        setup () {
-            let person = reactive({
-                firstName: 'firstName',
-                lastName: 'lastName',
-                age: 23
-            })
-            // 计算属性简写形式 —— 不考虑计算属性被修改的情况
-            person.fullName = computed(() => {
-                return `${person.firstName}-${person.lastName}`
-            })
-    
-            // 计算属性完整写法
-            person.fullName = computed({
-                get () {
-                    return `${person.firstName}-${person.lastName}`
-                },
-                set (newVal) {
-                    const newNameArr = newVal.split('-')
-                    person.firstName = newNameArr[0]
-                    person.lastName = newNameArr[1]
-                }
-            })
-            return { person }
+    // 计算属性完整写法
+    person.fullName = computed({
+        get () {
+            return `${person.firstName}-${person.lastName}`
+        },
+        set (newVal) {
+            const newNameArr = newVal.split('-')
+            person.firstName = newNameArr[0]
+            person.lastName = newNameArr[1]
         }
-    }
-    </script>
+    })
     ```
 
+## 3.8 watch
+
+1.  与 Vue2 中 watch 配置一致。
+
+2.  写法：
+
+    ```javascript
+    // 情况一：监视ref定义的一个响应式数据
+    watch(sum, (newVal, oldVal) => {
+        console.log('sum', newVal, oldVal)
+    })
     
+    // 情况二：监视ref定义的多个响应式数据
+    watch([sum, msg], (newVal, oldVal) => {
+        console.log('sum or msg', newVal, oldVal)
+    })
+    
+    // 情况三：监视reactive定义的响应式数据中的全部数据 (无法正确获取oldValue、强制开启深度监视)
+    watch(person, (newVal, oldVal) => {
+        console.log('person', newVal, oldVal)
+    }, { deep: false }) // 此处deep为false无效
+    
+    // 情况四：监视reactive定义的响应式数据中的一个数据
+    watch(() => (person.age), (newVal, oldVal) => {
+        console.log('person.age', newVal, oldVal)
+    })
+    
+    // 情况五：监视reactive定义的响应式数据的一些数据
+    watch([() => (person.name), () => (person.age)], (newVal, oldVal) => {
+        console.log('person.name or person.age', newVal, oldVal)
+    })
+    
+    // 特殊情况：子节点深层数据的监听要开启深度监视
+    watch(() => (person.job), (newVal, oldVal) => {
+        console.log('person.job.salary', newVal, oldVal)
+    }, { deep: true }) // 监听子节点的深层数据需要开启深度监视
+    ```
+
+3.  tips：
+
+    -   监视 reactive 定义的响应式数据时，无法获取 oldValue，强制开启深度监视 ( deep配置失效 )。
+    -   监视 reactive 定义的响应式数据中的某个含有深层数据的属性时，deep配置有效。
 
