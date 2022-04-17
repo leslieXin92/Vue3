@@ -540,3 +540,43 @@ Vite 官网：https://vitejs.cn
         toRefs(person)
         ```
 
+
+
+# 四、其他Composition API
+
+## 4.1 shallowRef 和 shallowReactive
+
+-   shallowRef：只处理基本数据类型的响应式，不进行对象的响应式处理。
+
+-   shallowReactive：只处理对象最外层属性的响应式 ( 浅响应式 )。
+
+-   code：
+
+    ```javascript
+    // 只有第一层的数据是响应式
+    const job = shallowReactive({
+        type: 'front end ',
+        salary: {
+            baseSalary: 5400,
+            commissionSalary: 700
+        }
+    })
+    
+    // shallowRef定义的对象没有响应式
+    const person = shallowRef({
+        name: 'yahoo',
+        age: 23
+    })
+    
+    function editType () {
+        job.type += '！' // 有效
+    }
+    function incrementSalary () {
+        job.salary.baseSalary += 1000 // 无效
+    }
+    function incrementAge () {
+        person.value.age++ // 无效
+    }
+    ```
+
+    
