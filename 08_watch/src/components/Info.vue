@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { ref, reactive, watch } from 'vue'
+import { ref, reactive, watch, watchEffect } from 'vue'
 
 export default {
     name: 'Info',
@@ -63,6 +63,13 @@ export default {
             console.log('person.job.salary', newVal, oldVal)
         }, { deep: true }) // 监听子节点的深层数据需要开启深度监视
 
+        // watchEffect
+        watchEffect(() => {
+            const sumTemp = sum
+            const personTemp = person
+            console.log('watchEffect', sumTemp, personTemp)
+        })
+
         function incrementSum () {
             sum.value++
         }
@@ -79,7 +86,7 @@ export default {
             person.job.firstJob.salary += 1000
         }
 
-        return { sum, msg, person, incrementSum, addExclamationMark, addLetter, incrementAge, incrementSalary }
+        return { sum, msg, person, watchEffect, incrementSum, addExclamationMark, addLetter, incrementAge, incrementSalary }
     }
 }
 </script>

@@ -325,3 +325,23 @@ Vite 官网：https://vitejs.cn
     -   监视 reactive 定义的响应式数据时，无法获取 oldValue，强制开启深度监视 ( deep配置失效 )。
     -   监视 reactive 定义的响应式数据中的某个含有深层数据的属性时，deep配置有效。
 
+## 3.9 watchEffect
+
+-   写法：
+
+    ```javascript
+    watchEffect(() => {
+        const sumTemp = sum
+        const personTemp = person
+        console.log('watchEffect', sumTemp, personTemp)
+    })
+    ```
+
+-   watch 的套路是：既要指明监视的属性，也要指明监视的回调。
+
+-   watchEffect 的套路是：不用指明监视哪个属性，监视的回调中用到了哪个属性，那就监视那个属性。
+
+-   watchEffect 有点像 computed：
+
+    -   但 computed 注重的是结果，即回调函数的返回值，所以必须写 return 返回值。
+    -   而 watchEffect 更注重的是过程，即回调函数的函数体，所以不用写 return 返回值。
