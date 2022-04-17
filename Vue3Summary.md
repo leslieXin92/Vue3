@@ -579,4 +579,40 @@ Vite 官网：https://vitejs.cn
     }
     ```
 
+## 4.2 readOnly 和 shallowReadOnly
+
+-   readOnly：让一个响应式数据变为只读 ( 深只读 )。
+
+-   shallowReadOnly：让一个响应式数据变为只读 ( 浅只读 )。
+
+-   code：
+
+    ```javascript
+    let sum = ref(0)
+    let person = reactive({
+        name: 'yahoo',
+        age: 23,
+        job: {
+            type: 'front end',
+            salary: {
+                baseSalary: 5400,
+                commissionSalary: 700
+            }
+        }
+    })
+    
+    sum = readonly(sum)
+    person = shallowReadonly(person)
+    
+    function incrementSum () {
+        sum.value++ // 无效
+    }
+    function incrementAge () {
+        person.age++ // 无效
+    }
+    function incrementSalary () {
+        person.job.salary.baseSalary += 1000 // 有效
+    }
+    ```
+
     
