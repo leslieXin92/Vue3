@@ -6,7 +6,7 @@
     <button @click="incrementSum"> sum+1 </button>
 
     <h1>name：{{ person.name }}</h1>
-    <h1>name：{{ person.age }}</h1>
+    <h1>age：{{ person.age }}</h1>
     <h1>firstJobType：{{ person.job.firstJob.type }}</h1>
     <h1>firstJobSalary：{{ person.job.firstJob.salary }}</h1>
     <button @click="addLetter"> addLetter </button>
