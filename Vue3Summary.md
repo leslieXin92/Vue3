@@ -426,4 +426,96 @@ Vite 官网：https://vitejs.cn
     }
     ```
 
-    
+## 3.10 自定义hook函数
+
+-   什么是 hook？
+
+    -   本质是一个函数，把 setup 函数中使用的 Composition API 进行了封装。
+    -   类似与 Vue2 中的 mixin。
+
+-   自定义 hook 的优势：
+
+    -   复用代码，让 setup 中逻辑更清楚易懂。
+
+-   code：
+
+    -   `src/hooks/useCoordinate.js`：
+
+        ```javascript
+        import { reactive, onMounted, onBeforeUnmount } from 'vue'
+        
+        export default function () {
+            // 数据
+            const coordinate = reactive({
+                x: 0,
+                y: 0
+            })
+        
+            // 方法
+            function getCurCoordinate (e) {
+                console.log(e.pageX, e.pageY)
+                coordinate.x = e.pageX
+                coordinate.y = e.pageY
+            }
+        
+            // 钩子
+            onMounted(() => {
+                window.addEventListener('click', getCurCoordinate)
+            })
+        
+            onBeforeUnmount(() => {
+                window.removeEventListener('click', getCurCoordinate)
+            })
+        
+            return coordinate
+        }
+        ```
+
+    -   `src/App.vue`：
+
+        ```vue
+        <template>
+            <h1>current mouse coordinate is：</h1>
+            <h2>X：{{ coordinate.x }}</h2>
+            <h2>Y：{{ coordinate.y }}</h2>
+            <Info v-if="isShowInfo" />
+        </template>
+        
+        <script>
+        import Info from './components/Info.vue'
+        import useCoordinate from './hooks/useCoordinate'
+        
+        export default {
+            name: "App",
+            components: { Info },
+            setup () {
+                const coordinate = useCoordinate()
+                return { coordinate }
+            }
+        }
+        </script>
+        ```
+
+    -   `src/components/Info.vue`：
+
+        ```vue
+        <template>
+            <h1>current mouse coordinate is：</h1>
+            <h2>X：{{ coordinate.x }}</h2>
+            <h2>Y：{{ coordinate.y }}</h2>
+        </template>
+        
+        <script>
+        import useCoordinate from '../hooks/useCoordinate'
+        
+        export default {
+            name: 'Info',
+            setup () {
+                const coordinate = useCoordinate()
+                return { coordinate }
+            }
+        }
+        </script>
+        ```
+
+## 3.11
