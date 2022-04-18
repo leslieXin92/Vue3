@@ -692,4 +692,59 @@ Vite 官网：https://vitejs.cn
     </script>
     ```
 
-    
+## 4.5 provide 和 reject
+
+![](https://raw.githubusercontent.com/leslieXin92/picGo/master/img/202204190027967.png)
+
+-   作用：实现祖先组件与后代组件通信。
+
+-   方式：父组件有一个 provide 选项来提供数据，子组件有一个 inject 选项来开始使用这些数据。
+
+-   code：
+
+    -   祖先组件：
+
+        ```vue
+        <template>
+            <h1>祖先组件，{{ name }}--{{ age }}</h1>
+        </template>
+        
+        <script>
+        import { reactive, toRefs, provide } from 'vue'
+        
+        export default {
+            name: "App",
+            setup () {
+                let person = reactive({
+                    name: 'yahoo',
+                    age: 23
+                })
+                provide('personInfo', person) // 给自己的后代组件传递数据
+                return { ...toRefs(person) }
+            }
+        }
+        </script>
+        ```
+
+    -   后代组件：
+
+        ```vue
+        <template>
+            <h1>后代组件，{{ name }}--{{ age }}</h1>
+        </template>
+        
+        <script>
+        import { toRefs, inject } from 'vue'
+        
+        export default {
+            name: "GrandSon",
+            setup () {
+                let grandSonPerson = inject('personInfo') // 接收数据
+                return { ...toRefs(grandSonPerson) }
+            }
+        }
+        </script>
+        ```
+
+        
+

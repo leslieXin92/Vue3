@@ -10,7 +10,7 @@ import { toRefs, inject } from 'vue'
 export default {
     name: "GrandSon",
     setup () {
-        let grandSonPerson = inject('personInfo')
+        let grandSonPerson = inject('personInfo') // 接收数据
         return { ...toRefs(grandSonPerson) }
     }
 }
