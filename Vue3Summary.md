@@ -615,4 +615,39 @@ Vite 官网：https://vitejs.cn
     }
     ```
 
+
+## 4.3 toRaw 和 markRaw
+
+-   toRaw：
+
+    -   作用：将一个由 reactive 生成的响应式对象转为普通对象。
+    -   使用场景：用于读取响应式对象对应的普通对象，对这个普通对象的所有操作，都不会引起页面更新。
+
+-   markRaw：
+
+    -   作用：标记一个对象，使其永远不会成为响应式对象。
+    -   使用场景：
+        -   有些值不应被设置为响应式的，如复杂的三方库等。
+        -   当渲染具有不可变数据源的大列表时，跳过响应式转换可以提高性能。
+
+-   code：
+
+    ```javascript
+    function showRawPerson () {
+        const p = toRaw(person)
+        p.age++
+        console.log(p) // {name: 'yahoo' …… }
+    }
+    function addGirlFriend () {
+        const girlFriend = { name: 'cabbage', age: 22 }
+        person.girlFriend = markRaw(girlFriend)
+    }
+    function editGirlFriendName () {
+        person.girlFriend.name += '~' // 无效
+    }
+    function incrementGirlFriendAge () {
+        person.girlFriend.age++ // 无效
+    }
+    ```
+
     
