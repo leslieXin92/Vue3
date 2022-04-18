@@ -579,11 +579,11 @@ Vite 官网：https://vitejs.cn
     }
     ```
 
-## 4.2 readOnly 和 shallowReadOnly
+## 4.2 readonly 和 shallowReadonly
 
--   readOnly：让一个响应式数据变为只读 ( 深只读 )。
+-   readonly：让一个响应式数据变为只读 ( 深只读 )。
 
--   shallowReadOnly：让一个响应式数据变为只读 ( 浅只读 )。
+-   shallowReadonly：让一个响应式数据变为只读 ( 浅只读 )。
 
 -   code：
 
@@ -753,5 +753,5 @@ Vite 官网：https://vitejs.cn
 |      isRef      |              检查一个值是否为一个 ref 对象               |
 |   isReactive    |      检查一个对象是否是由 reactive 创建的响应式代理      |
 |   isReadonly    |       检查一个对象是否是由 readonly 创建的只读代理       |
-|     isProxy     | 检查一个对象是否是由 reactive 或 readOnly 方法创建的代理 |
+|     isProxy     | 检查一个对象是否是由 reactive 或 readonly 方法创建的代理 |
 
