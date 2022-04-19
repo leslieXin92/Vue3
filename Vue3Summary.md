@@ -775,3 +775,12 @@ Vite 官网：https://vitejs.cn
 
 ![](https://raw.githubusercontent.com/leslieXin92/picGo/master/img/202204200058520.gif)
 
+
+
+# 六、新的组件
+
+## 6.1 Fragment
+
+-   在 Vue2 中，组件必须有一个根标签。
+-   在 Vue3 中，组件可以没有根标签，内部会将多个标签包含在一个 Fragment 虚拟元素中。
+-   优点：减少标签层级，减小内存占用。
