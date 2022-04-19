@@ -127,6 +127,7 @@ Vite 官网：https://vitejs.cn
         -   但在 setup 中不能访问到 Vue2 配置 ( data、methods、computed )。
         -   如果有重名，setup 优先。
     2.  setup 不能是一个 async 函数，因为返回值不再是 return 的对象，而是 promise，模板看不到 return 对象中的属性。
+    3.  后期也可以返回一个 Promise 实例，但需要 Suspense 和异步组件的配合。
 
 ## 3.2 ref
 
@@ -799,4 +800,36 @@ Vite 官网：https://vitejs.cn
     </teleport>
     ```
 
-    
+
+## 6.3 Suspense
+
+-   等待异步组件时渲染一些额外的内容，让应用有更好的用户体验。
+
+-   使用步骤：
+
+    -   异步引入组件：
+
+        ```javascript
+        import { defineAsyncComponent } from 'vue'
+        const Son = defineAsyncComponent(() => import('./components/Son.vue'))
+        ```
+
+    -   使用 Suspense 包裹组件，并配置好 default 与 fallback：
+
+        ```html
+        <template>
+            <div class="app">
+                <h1> App组件 </h1>
+                <Suspense>
+                    <template v-slot:default>
+                        <Son />
+                    </template>
+                    <template v-slot:fallback>
+                        <h1> 加载中…… </h1>
+                    </template>
+                </Suspense>
+            </div>
+        </template>
+        ```
+
+        
