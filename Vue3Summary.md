@@ -755,3 +755,23 @@ Vite 官网：https://vitejs.cn
 |   isReadonly    |       检查一个对象是否是由 readonly 创建的只读代理       |
 |     isProxy     | 检查一个对象是否是由 reactive 或 readonly 方法创建的代理 |
 
+
+
+# 五、Composition API 的优势
+
+## 5.1 Options API 存在的问题
+
+使用传统 Options API 中，新增或者修改一个需求，就需要分别在 data、methods、computed 里修改。
+
+<img src="https://raw.githubusercontent.com/leslieXin92/picGo/master/img/202204200053146.gif"  />
+
+<img src="https://raw.githubusercontent.com/leslieXin92/picGo/master/img/202204200054997.gif"  />
+
+## 5.2 Composition API 的优势
+
+我们可以更加优雅地组织我们的代码、函数。让相关功能的代码更加有序地组织在一起。
+
+<img src="https://raw.githubusercontent.com/leslieXin92/picGo/master/img/202204200057268.gif"  />
+
+![](https://raw.githubusercontent.com/leslieXin92/picGo/master/img/202204200058520.gif)
+
