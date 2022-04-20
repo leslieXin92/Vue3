@@ -832,4 +832,67 @@ Vite 官网：https://vitejs.cn
         </template>
         ```
 
-        
+
+
+
+# 七、其他一些改变
+
+## 7.1 全局API的转移
+
+Vue2 中有许多全局 API 和配置，如注册全局组件、注册全局指令等。
+
+```javascript
+//注册全局组件
+Vue.component('MyButton', {
+  data: () => ({
+    count: 0
+  }),
+  template: '<button @click="count++"> {{ count }} </button>'
+})
+
+//注册全局指令
+Vue.directive('focus', {
+  inserted: el => el.focus()
+}
+```
+
+在 Vue3 中对这些 API 做出了调整，将全局的 API，即 `Vue.xxx` 调整到了应用实例 app 上。
+
+| 说明             | Vue2 全局 API ( Vue )    | Vue3 实例 API ( app )                       |
+| ---------------- | ------------------------ | ------------------------------------------- |
+| Vue 配置         | Vue.config.xxx           | app.config.xxx                              |
+| 生产提示         | Vue.config.productionTip | <strong style="color:#DD5145">移除</strong> |
+| 组件             | Vue.component            | app.component                               |
+| 自定义指令       | Vue.directive            | app.directive                               |
+| mixin            | Vue.mixin                | app.mixin                                   |
+| 使用xxx          | Vue.use                  | app.use                                     |
+| Vue 身上追加属性 | Vue.prototype            | app.config.globalProperties                 |
+
+## 7.2 其他改变
+
+1.  data 配置项始终都要被声明成一个函数。
+
+2.  过度类名的更改：
+
+    |          说明          |    Vue2    |     Vue3     |
+    | :--------------------: | :--------: | :----------: |
+    | 定义进入过渡的开始状态 |  v-enter   | v-enter-from |
+    | 定义进入过渡的结束状态 | v-leave-to |  v-leave-to  |
+    | 定义离开过渡的开始状态 |  v-leave   | v-leave-from |
+    | 定义离开过渡的结束状态 | v-enter-to |  v-enter-to  |
+
+    ​	![](https://raw.githubusercontent.com/leslieXin92/picGo/master/img/202204201006948.png)
+
+3.  移除 keyCode 作为 v-on 的修饰符，同时也不再支持 config.keyCodes。
+
+4.  移除 v-on.native 修饰符。
+
+    -   Vue3 父组件绑定自定义事件：
+    -   Vue3 子组件声明自定义事件：
+
+5.  移除过滤器 ( filter )
+
+    >   过滤器虽然这看起来很方便，但它需要一个自定义语法，打破大括号内表达式是 “只是 JavaScript” 的假设，这不仅有学习成本，而且有实现成本！建议用方法调用或计算属性去替换过滤器。
+
+6.  etc.
+
