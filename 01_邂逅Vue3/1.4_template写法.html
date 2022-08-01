@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app"> </div>
+
+  <!-- 写法一 -->
+  <script type="x-template" id="counter">
+    <h1> {{counter}} </h1>
+    <button @click='increment'> + </button>
+    <button @click='decrement'> - </button>
+  </script>
+
+  <!-- 写法二 -->
+  <template id="counter">
+    <h1> {{counter}} </h1>
+    <button @click='increment'> + </button>
+    <button @click='decrement'> - </button>
+  </template>
+</body>
+
+<script src="../Vue.js"> </script>
+<script>
+  Vue.createApp({
+    template: '#counter',
+    data() {
+      return {
+        counter: 100
+      }
+    },
+    methods: {
+      increment() {
+        this.counter++
+      },
+      decrement() {
+        this.counter--
+      }
+    }
+  }).mount('#app')
+</script>
+
+</html>
