@@ -5,6 +5,14 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>v-bind</title>
+		<style>
+			.original {
+				cursor: pointer;
+			}
+			.active {
+				color: darkred;
+			}
+		</style>
 	</head>
 
 	<body>
@@ -13,6 +21,14 @@
 		<template id="my-app">
 			<img v-bind:src="imgUrl" alt="" />
 			<a :href="link">skip to baidu</a>
+
+			<!-- v-bind绑定class - 对象语法 -->
+			<h1 class="original" :class="{active:flag}" @click="flag=!flag">
+				{{msg}}
+			</h1>
+
+			<!-- v-bind绑定class - 数组语法 -->
+			<h1 :class="['original', {active:flag}]">{{msg}}</h1>
 		</template>
 	</body>
 
@@ -23,7 +39,9 @@
 			data() {
 				return {
 					imgUrl: "https://avatars.githubusercontent.com/u/91523639?v=4",
-					link: "https://www.baidu.com"
+					link: "https://www.baidu.com",
+					msg: "hello world",
+					flag: false
 				}
 			}
 		}).mount("#app")
