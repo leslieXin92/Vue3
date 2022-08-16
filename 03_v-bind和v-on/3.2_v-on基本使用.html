@@ -7,10 +7,14 @@
 		<title>v-on</title>
 		<style>
 			span {
-				display: block;
+				display: flex;
+				justify-content: center;
+				align-items: center;
 				width: 200px;
-				height: 200px;
-				margin-top: 20px;
+				height: 100px;
+				margin: 20px;
+				padding: 10px;
+				font-size: 20px;
 				background-color: paleturquoise;
 			}
 		</style>
@@ -30,6 +34,13 @@
 			<span v-on="{click: handleClick, mousemove: handleMousemove}">
 				click to view counter and mouse move to increase counter
 			</span>
+
+			<!-- 参数传递 -->
+			<span @click="handleParams($event, 'leslie')">click to view params</span>
+			<span @click="handleParams('leslie', $event)">click to view params</span>
+
+			<!-- 修饰符 -->
+			<span @click.once="handleClickOnce"> click to alert but just once </span>
 		</template>
 	</body>
 
@@ -48,6 +59,12 @@
 				},
 				handleMousemove() {
 					this.counter++
+				},
+				handleParams(a, b) {
+					console.log(a, b)
+				},
+				handleClickOnce() {
+					alert("handleClickOnce")
 				}
 			}
 		}).mount("#app")
