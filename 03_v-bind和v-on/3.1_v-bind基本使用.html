@@ -10,7 +10,7 @@
 				cursor: pointer;
 			}
 			.active {
-				color: darkred;
+				color: red;
 			}
 		</style>
 	</head>
@@ -23,12 +23,30 @@
 			<a :href="link">skip to baidu</a>
 
 			<!-- v-bind绑定class - 对象语法 -->
-			<h1 class="original" :class="{active:flag}" @click="flag=!flag">
+			<h1
+				class="original"
+				:class="{active:isActive}"
+				@click="isActive=!isActive"
+			>
 				{{msg}}
 			</h1>
 
 			<!-- v-bind绑定class - 数组语法 -->
-			<h1 :class="['original', {active:flag}]">{{msg}}</h1>
+			<h1 :class="['original', {active:isActive}]">{{msg}}</h1>
+
+			<!-- v-bind绑定style - 对象语法 -->
+			<h1
+				:style="{
+          color: finalColor,
+          fontSize: finalFontSize,
+          'font-weight': finalFontWeight
+        }"
+			>
+				{{msg}}
+			</h1>
+
+			<!-- v-bind绑定style - 数组语法 -->
+			<h1 :style="[styleObj1, styleObj2]">{{msg}}</h1>
 		</template>
 	</body>
 
@@ -41,7 +59,17 @@
 					imgUrl: "https://avatars.githubusercontent.com/u/91523639?v=4",
 					link: "https://www.baidu.com",
 					msg: "hello world",
-					flag: false
+					isActive: false,
+					finalColor: "green",
+					finalFontSize: "28px",
+					finalFontWeight: "100",
+					styleObj1: {
+						color: "green"
+					},
+					styleObj2: {
+						fontWeight: "100",
+						"font-size": "28px"
+					}
 				}
 			}
 		}).mount("#app")
