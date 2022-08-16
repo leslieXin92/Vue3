@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>v-on</title>
+		<style>
+			span {
+				display: block;
+				width: 200px;
+				height: 200px;
+				margin-top: 20px;
+				background-color: paleturquoise;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="app"></div>
+
+		<template id="my-app">
+			<h1>{{counter}}</h1>
+
+			<!-- 绑定事件 -->
+			<span v-on:click="handleClick"> click to view counter </span>
+			<span @mousemove="handleMousemove"> mouse move to increase counter </span>
+
+			<!-- 绑定对象 -->
+			<span v-on="{click: handleClick, mousemove: handleMousemove}">
+				click to view counter and mouse move to increase counter
+			</span>
+		</template>
+	</body>
+
+	<script src="../Vue.js"></script>
+	<script>
+		Vue.createApp({
+			template: "#my-app",
+			data() {
+				return {
+					counter: 100
+				}
+			},
+			methods: {
+				handleClick() {
+					alert(`counter : ${this.counter}`)
+				},
+				handleMousemove() {
+					this.counter++
+				}
+			}
+		}).mount("#app")
+	</script>
+</html>
