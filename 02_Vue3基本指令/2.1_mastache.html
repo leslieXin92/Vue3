@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<div id="app"></div>
+
+		<template id="my-app">
+			<h1>{{msg}}</h1>
+			<h1>{{counter*10}}</h1>
+			<h1>{{getReverseMsg()}}</h1>
+			<h1>{{flag?'leslie':'cabbage'}}</h1>
+			<button @click="handleChangeFlag">change flag</button>
+		</template>
+	</body>
+
+	<script src="../Vue.js"></script>
+	<script>
+		Vue.createApp({
+			template: "#my-app",
+			data() {
+				return {
+					msg: "hello world",
+					counter: 100,
+					flag: true
+				}
+			},
+			methods: {
+				getReverseMsg() {
+					return this.msg.split(" ").reverse().join(" ")
+				},
+				handleChangeFlag() {
+					this.flag = !this.flag
+				}
+			}
+		}).mount("#app")
+	</script>
+</html>
