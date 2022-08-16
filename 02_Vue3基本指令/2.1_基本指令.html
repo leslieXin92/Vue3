@@ -17,31 +17,31 @@
 
 		<template id="my-app">
 			<!-- v-once -->
-			<template>
+			<div>
 				<h1>{{counter}}</h1>
 				<h1 v-once>{{counter}}</h1>
 				<button @click="counter++">counter++</button>
-			</template>
+			</div>
 
 			<!-- v-text -->
-			<template>
+			<div>
 				<h1 v-text="msg"></h1>
-			</template>
+			</div>
 
 			<!-- v-html -->
-			<template>
+			<div>
 				<div v-html="html"></div>
-			</template>
+			</div>
 
 			<!-- v-pre -->
-			<template>
+			<div>
 				<h1 v-pre>{{msg}}</h1>
-			</template>
+			</div>
 
 			<!-- v-cloak -->
-			<template>
+			<div>
 				<h1 v-cloak>{{msg}}</h1>
-			</template>
+			</div>
 		</template>
 	</body>
 
