@@ -47,6 +47,12 @@
 
 			<!-- v-bind绑定style - 数组语法 -->
 			<h1 :style="[styleObj1, styleObj2]">{{msg}}</h1>
+
+			<!-- v-bind动态绑定属性 -->
+			<h1 :user="name" :girlFriend="girlFriendName">{{msg}}</h1>
+
+			<!-- v-bind绑定对象 -->
+			<h1 v-bind="info">{{msg}}</h1>
 		</template>
 	</body>
 
@@ -69,6 +75,12 @@
 					styleObj2: {
 						fontWeight: "100",
 						"font-size": "28px"
+					},
+					name: "leslie",
+					girlFriendName: "cabbage",
+					info: {
+						name: "leslie",
+						girlFriendName: "cabbage"
 					}
 				}
 			}
