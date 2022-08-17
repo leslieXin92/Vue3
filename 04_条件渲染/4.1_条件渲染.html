@@ -11,7 +11,7 @@
 		<div id="app"></div>
 
 		<template id="my-app">
-			<!-- 基本使用 -->
+			<!-- v-if 基本使用 -->
 			<input type="text" v-model="score" />
 			<h1 v-if="score>=90">优秀</h1>
 			<h1 v-else-if="score>=60 && score<90">及格</h1>
@@ -25,6 +25,9 @@
 			<template v-else>
 				<h1>cabbage</h1>
 			</template>
+
+			<!-- v-show 基本使用 -->
+			<h1 v-show="isShow">yahoo</h1>
 		</template>
 	</body>
 
