@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<div id="app"></div>
+
+		<template id="my-app">
+			<!-- 基本使用 -->
+			<input type="text" v-model="score" />
+			<h1 v-if="score>=90">优秀</h1>
+			<h1 v-else-if="score>=60 && score<90">及格</h1>
+			<h1 v-else>挂科</h1>
+
+			<!-- v-if 和 template -->
+			<button @click="isShow=!isShow">click to change name</button>
+			<template v-if="isShow">
+				<h1>leslie</h1>
+			</template>
+			<template v-else>
+				<h1>cabbage</h1>
+			</template>
+		</template>
+	</body>
+
+	<script src="../Vue.js"></script>
+	<script>
+		Vue.createApp({
+			template: "#my-app",
+			data() {
+				return {
+					score: null,
+					isShow: true
+				}
+			}
+		}).mount("#app")
+	</script>
+</html>
