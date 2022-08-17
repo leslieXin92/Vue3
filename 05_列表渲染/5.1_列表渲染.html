@@ -31,6 +31,15 @@
 					index: {{index}} —— item: {{item}}
 				</li>
 			</ul>
+
+			<!-- v-for 和 template -->
+			<ul>
+				<template v-for="(value, key) in info" :key="key">
+					<li>{{key}}</li>
+					<li>{{value}}</li>
+					<hr />
+				</template>
+			</ul>
 		</template>
 	</body>
 
