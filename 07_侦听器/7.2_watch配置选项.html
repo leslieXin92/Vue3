@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<div id="app"></div>
+
+		<template id="my-app">
+			<h1>name: {{info.name}}</h1>
+			<h1>age: {{info.age}}</h1>
+			<button @click="handleName">click to change name</button>
+			<button @click="handleAge">click to change age</button>
+			<button @click="handleInfo">click to change info</button>
+		</template>
+	</body>
+
+	<script src="../Vue.js"></script>
+	<script>
+		Vue.createApp({
+			template: "#my-app",
+			data() {
+				return {
+					info: {
+						name: "leslie",
+						age: 23
+					}
+				}
+			},
+			watch: {
+				// 默认只监听info本身，不监听info.name和info.age
+				info: {
+					deep: true, // 深度监听
+					immediate: true, // 立即监听
+					handler: function (newVal, oldVal) {
+						console.log("newVal", newVal)
+						console.log("oldVal", oldVal)
+					}
+				}
+			},
+			methods: {
+				handleName() {
+					this.info.name += "！"
+				},
+				handleAge() {
+					this.info.age++
+				},
+				handleInfo() {
+					this.info = {
+						name: "cabbage",
+						age: "22"
+					}
+				}
+			}
+		}).mount("#app")
+	</script>
+</html>
