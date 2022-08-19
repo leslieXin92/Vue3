@@ -36,7 +36,7 @@
 				info: {
 					deep: true, // 深度监听
 					immediate: true, // 立即监听
-					handler: function (newVal, oldVal) {
+					handler(newVal, oldVal) {
 						console.log("newVal", newVal)
 						console.log("oldVal", oldVal)
 					}
