@@ -11,19 +11,20 @@
 		<div id="app"></div>
 
 		<template id="my-app">
-			<component-a />
-			<!-- 此处component-b并未生效 -->
+			<component-a> </component-a>
 			<component-b />
 		</template>
 
 		<template id="component-a">
-			<h1>header</h1>
-			<h2>content</h2>
-			<!-- 此处component-b生效 -->
-			<component-b />
+			<h1>componentA</h1>
 		</template>
 
 		<template id="component-b">
+			<h1>componentB</h1>
+			<component-c />
+		</template>
+
+		<template id="component-c">
 			<h1>{{msg}}</h1>
 		</template>
 	</body>
@@ -35,13 +36,13 @@
 		})
 
 		// 注册全局组件
-		// 文档说可被链式调用，但不知为啥无效，有可能只在.vue中生效
 		app
 			.component("component-a", { template: "#component-a" })
-			.component("component-b", {
-				template: "#component-b",
+			.component("component-b", { template: "#component-b" })
+			.component("componentC", {
+				template: "#component-c",
 				data() {
-					return { msg: "hello world" }
+					return { msg: "componentC" }
 				}
 			})
 
