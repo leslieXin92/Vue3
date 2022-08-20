@@ -4,7 +4,7 @@ import "../css/style.css"
 // import "css-loader!../css/style.css"
 // xxx-loader! 意思是这个css需要用这个loader加载，现在更多是在webpack.config.js中配置
 
-const h1El = document.createElement("h1")
-h1El.innerHTML = "hello world"
-h1El.className = "title"
-document.body.appendChild(h1El)
+const divEl = document.createElement("div")
+divEl.innerHTML = "hello world"
+divEl.className = "title"
+document.body.appendChild(divEl)

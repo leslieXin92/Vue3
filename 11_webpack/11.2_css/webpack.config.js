@@ -10,7 +10,7 @@ module.exports = {
 		rules: [
 			{
 				test: /\.css$/, // 正则
-				use: ["css-loader"]
+				use: ["style-loader", "css-loader"] // 从后往前执行
 			}
 		]
 	}
