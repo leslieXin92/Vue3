@@ -11,7 +11,10 @@
 		<div id="app"></div>
 
 		<template id="my-app">
+			<input type="text" :value="msg" @input="handleInput" />
+
 			<input type="text" v-model="msg" />
+
 			<h1>{{msg}}</h1>
 		</template>
 	</body>
@@ -23,6 +26,11 @@
 			data() {
 				return {
 					msg: "hello world"
+				}
+			},
+			methods: {
+				handleInput(e) {
+					this.msg = e.target.value
 				}
 			}
 		}).mount("#app")
