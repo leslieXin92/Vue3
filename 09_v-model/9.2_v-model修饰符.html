@@ -4,16 +4,23 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>v-model基本使用</title>
+		<title>v-model修饰符</title>
 	</head>
 
 	<body>
 		<div id="app"></div>
 
 		<template id="my-app">
-			<input type="text" :value="msg" @input="handleInput" />
-
 			<input type="text" v-model="msg" />
+
+			<!-- .lazy 敲回车进行双向绑定 -->
+			<input type="text" v-model.lazy="msg" />
+
+			<!-- .number string转number v-model默认转换成string -->
+			<input type="text" v-model="msg" />
+
+			<!-- .trim 去除首尾空格 -->
+			<input type="text" v-model.trim="msg" />
 
 			<h1>{{msg}}</h1>
 		</template>
@@ -26,11 +33,6 @@
 			data() {
 				return {
 					msg: "hello world"
-				}
-			},
-			methods: {
-				handleInput(e) {
-					this.msg = e.target.value
 				}
 			}
 		}).mount("#app")
