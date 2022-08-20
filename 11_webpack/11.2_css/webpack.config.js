@@ -11,6 +11,10 @@ module.exports = {
 			{
 				test: /\.css$/, // 正则
 				use: ["style-loader", "css-loader"] // 从后往前执行
+			},
+			{
+				test: /\.less$/,
+				use:["style-loader", "css-loader",'less-loader']
 			}
 		]
 	}

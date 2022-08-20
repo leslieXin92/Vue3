@@ -4,6 +4,8 @@ import "../css/style.css"
 // import "css-loader!../css/style.css"
 // xxx-loader! 意思是这个css需要用这个loader加载，现在更多是在webpack.config.js中配置
 
+import "../css/title.less"
+
 const divEl = document.createElement("div")
 divEl.innerHTML = "hello world"
 divEl.className = "title"
