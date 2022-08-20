@@ -8,6 +8,8 @@ import "../css/title.less"
 
 import "../css/image.css"
 
+import img from "../img/2.jpg"
+
 const divEl = document.createElement("div")
 divEl.innerHTML = "hello world"
 divEl.className = "title"
@@ -16,3 +18,7 @@ document.body.appendChild(divEl)
 const bgDivEl = document.createElement("div")
 bgDivEl.className = "image-bg"
 document.body.appendChild(bgDivEl)
+
+const imgEl = document.createElement("img")
+imgEl.src = img // 不能写死路径
+document.body.appendChild(imgEl)
