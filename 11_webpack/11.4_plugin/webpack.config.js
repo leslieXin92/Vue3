@@ -4,6 +4,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin")
 const { DefinePlugin } = require("webpack")
 
 module.exports = {
+	mode: "development", // development、production
+	devtool: "source-map", // 建立js映射，方便控制台调试
 	entry: "./src/index.js",
 	output: {
 		path: path.resolve(__dirname, "./dist"), // 必须是绝对路径
