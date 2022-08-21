@@ -18,11 +18,18 @@ module.exports = {
 			},
 			{
 				test: /\.(jpe?g|png|gif|svg)$/,
+				// use: {
+				// 	loader: "file-loader",
+				// 	options: {
+				// 		outputPath: "img",
+				// 		name: "[name]_[hash:6].[ext]"
+				// 	}
+				// }
 				use: {
-					loader: "file-loader",
+					loader: "url-loader",
 					options: {
 						outputPath: "img",
-						name: "[name]_[hash:6].[ext]"
+						limit: 1000 // bite
 					}
 				}
 			}
