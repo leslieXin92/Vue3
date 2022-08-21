@@ -1,5 +1,7 @@
 const path = require("path")
 const { CleanWebpackPlugin } = require("clean-webpack-plugin")
+const HtmlWebpackPlugin = require("html-webpack-plugin")
+const { DefinePlugin } = require("webpack")
 
 module.exports = {
 	entry: "./src/index.js",
@@ -45,5 +47,9 @@ module.exports = {
 			}
 		]
 	},
-	plugins: [new CleanWebpackPlugin()]
+	plugins: [
+		new CleanWebpackPlugin(),
+		new HtmlWebpackPlugin({ title: "webpack plugins" }),
+		new DefinePlugin({ BASE_URL: "'./'" })
+	]
 }
