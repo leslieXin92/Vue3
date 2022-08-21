@@ -1,3 +1,4 @@
+const { type } = require("os")
 const path = require("path")
 
 module.exports = {
@@ -25,11 +26,22 @@ module.exports = {
 				// 		name: "[name]_[hash:6].[ext]"
 				// 	}
 				// }
-				use: {
-					loader: "url-loader",
-					options: {
-						outputPath: "img",
-						limit: 1000 // bite
+
+				// use: {
+				// 	loader: "url-loader",
+				// 	options: {
+				// 		outputPath: "img",
+				// 		limit: 1000 // bite
+				// 	}
+				// }
+
+				type: "asset",
+				generator: {
+					filename: "img/[name]_[hash:6][ext]"
+				},
+				parser: {
+					dataUrlCondition: {
+						maxSize: 100 * 1024
 					}
 				}
 			}
