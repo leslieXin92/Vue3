@@ -8,6 +8,8 @@ import "../css/title.less"
 
 import "../css/image.css"
 
+import "../font/iconfont.css"
+
 import img from "../img/2.jpg"
 
 const divEl = document.createElement("div")
@@ -22,3 +24,7 @@ document.body.appendChild(bgDivEl)
 const imgEl = document.createElement("img")
 imgEl.src = img // 不能写死路径
 document.body.appendChild(imgEl)
+
+const iEl = document.createElement("i")
+iEl.className = "iconfont icon-ashbin"
+document.body.appendChild(iEl)
