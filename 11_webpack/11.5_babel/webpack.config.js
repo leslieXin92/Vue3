@@ -46,6 +46,20 @@ module.exports = {
 				generator: {
 					filename: "font/[name]_[hash:6].[ext]"
 				}
+			},
+
+			// babel
+			{
+				test: /\.js$/,
+				use: {
+					loader: "babel-loader",
+					options: {
+						plugins: [
+							"@babel/plugin-transform-arrow-functions",
+							"@babel/plugin-transform-block-scoping"
+						]
+					}
+				}
 			}
 		]
 	},
