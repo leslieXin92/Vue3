@@ -131,7 +131,7 @@ module.exports = function (url, options) {
     return url;
   }
 
-  url = String(url.__esModule ? url.default : url); // If url is already wrapped in quotes, remove them
+  url = String(url.__esModule ? url["default"] : url); // If url is already wrapped in quotes, remove them
 
   if (/^['"].*['"]$/.test(url)) {
     url = url.slice(1, -1);
@@ -228,13 +228,13 @@ document.body.appendChild(iEl);
   \**************************/
 /***/ ((module) => {
 
-var priceFormat = function () {
+var priceFormat = function priceFormat() {
   return "$0.00";
 }; // Common.js导出
 
 
 module.exports = {
-  priceFormat
+  priceFormat: priceFormat
 };
 
 /***/ }),
@@ -1126,9 +1126,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./js/element */ "./src/js/element.js");
 
 
-var {
-  priceFormat
-} = __webpack_require__(/*! ./js/format */ "./src/js/format.js");
+var _require = __webpack_require__(/*! ./js/format */ "./src/js/format.js"),
+    priceFormat = _require.priceFormat;
 
 
 console.log((0,_js_math__WEBPACK_IMPORTED_MODULE_0__.sum)(1, 2));
