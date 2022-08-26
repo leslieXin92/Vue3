@@ -51,16 +51,7 @@ module.exports = {
 			// babel
 			{
 				test: /\.js$/,
-				use: {
-					loader: "babel-loader",
-					options: {
-						// plugins: [
-						// 	"@babel/plugin-transform-arrow-functions",
-						// 	"@babel/plugin-transform-block-scoping"
-						// ]
-						presets: ["@babel/preset-env"]
-					}
-				}
+				loader: "babel-loader"
 			}
 		]
 	},
