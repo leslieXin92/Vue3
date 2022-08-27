@@ -11,9 +11,11 @@ module.exports = {
 		path: path.resolve(__dirname, "./dist"), // 必须是绝对路径
 		filename: "main.js"
 	},
-	// devServer: {
-	// 	contentBase: "./dist"
-	// },
+	target: "web", // 为哪个环境打包
+	devServer: {
+		// contentBase: "./dist",
+		hot: true // 模块热替换（按模块更新而非整个页面）
+	},
 	module: {
 		rules: [
 			// css
