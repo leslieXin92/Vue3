@@ -28,14 +28,14 @@ module.exports = {
 				secure: false, // https的兼容
 				changeOrigin: true // 切换到代理服务器
 			}
-		},
-		resolve: {
-			extensions: [".wasm", "mjs", ".js", ".json", ".veu"], // 默认去找 .xxx 后缀的文件
-			mainFiles: ["index"], // 文件夹默认去找 index 文件
-			alisa: {
-				"@": path.resolve(__dirname, "./src"),
-				'js': path.resolve(__dirname, "./src/js")
-			}
+		}
+	},
+	resolve: {
+		extensions: [".wasm", "mjs", ".js", ".json", ".veu"], // 默认去找 .xxx 后缀的文件
+		mainFiles: ["index"], // 文件夹默认去找 index 文件
+		alisa: {
+			"@": path.resolve(__dirname, "./src"),
+			js: path.resolve(__dirname, "./src/js")
 		}
 	},
 	module: {
