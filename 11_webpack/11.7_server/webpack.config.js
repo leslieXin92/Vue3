@@ -18,7 +18,17 @@ module.exports = {
 		host: "0.0.0.0",
 		port: 7777,
 		open: true,
-		compress: true // 静态文件压缩gzip
+		compress: true, // 静态文件压缩gzip
+		proxy: {
+			"./api": {
+				target: "http://localhost:8888",
+				pathRewrite: {
+					"^/api": "" // url中 “api” 重写为 “”
+				},
+				secure: false, // https的兼容
+				changeOrigin: true // 切换到代理服务器
+			}
+		}
 	},
 	module: {
 		rules: [
