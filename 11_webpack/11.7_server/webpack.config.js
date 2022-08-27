@@ -11,6 +11,9 @@ module.exports = {
 		path: path.resolve(__dirname, "./dist"), // 必须是绝对路径
 		filename: "main.js"
 	},
+	// devServer: {
+	// 	contentBase: "./dist"
+	// },
 	module: {
 		rules: [
 			// css
