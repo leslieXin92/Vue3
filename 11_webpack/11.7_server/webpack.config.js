@@ -33,7 +33,7 @@ module.exports = {
 	resolve: {
 		extensions: [".wasm", "mjs", ".js", ".json", ".veu"], // 默认去找 .xxx 后缀的文件
 		mainFiles: ["index"], // 文件夹默认去找 index 文件
-		alisa: {
+		alias: {
 			"@": path.resolve(__dirname, "./src"),
 			js: path.resolve(__dirname, "./src/js")
 		}
