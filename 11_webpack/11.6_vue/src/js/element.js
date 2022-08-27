@@ -29,6 +29,6 @@ const iEl = document.createElement("i")
 iEl.className = "iconfont icon-ashbin"
 document.body.appendChild(iEl)
 
-const appEl = document.createElement('div')
-appEl.id = 'app'
+const appEl = document.createElement("div")
+appEl.id = "app"
 document.body.appendChild(appEl)

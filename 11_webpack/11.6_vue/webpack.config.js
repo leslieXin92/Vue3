@@ -57,7 +57,7 @@ module.exports = {
 	},
 	plugins: [
 		new CleanWebpackPlugin(),
-		new HtmlWebpackPlugin({ title: "webpack plugins"}),
+		new HtmlWebpackPlugin({ title: "webpack plugins" }),
 		new DefinePlugin({ BASE_URL: "'./'" })
 	]
 }
