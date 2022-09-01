@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import MainBanner from "./MainBanner.vue"
-import MainProductionList from "./MainProductionList.vue"
+import MainBanner from './MainBanner.vue'
+import MainProductionList from './MainProductionList.vue'
 
 export default {
 	components: {
