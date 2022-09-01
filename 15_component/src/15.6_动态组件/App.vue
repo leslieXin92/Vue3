@@ -2,13 +2,13 @@
 	<button
 		v-for="item in tabs"
 		:key="item"
-		@click="handleClick(item)"
+		@click="tabClick(item)"
 		:class="{ active: currentTab === item }"
 	>
 		{{ item }}
 	</button>
 
-	<component :is="currentTab" />
+	<component :is="currentTab" :currentTab="currentTab" @pageClick="pageClick" />
 </template>
 
 <script>
@@ -25,8 +25,11 @@ export default {
 		}
 	},
 	methods: {
-		handleClick(item) {
+		tabClick(item) {
 			this.currentTab = item
+		},
+		pageClick(currentTab) {
+			console.log(`"${currentTab}" has been clicked`)
 		}
 	}
 }

@@ -1,9 +1,27 @@
 <template>
-	<h1>category</h1>
+	<h1 @click="pageClick">category</h1>
 </template>
 
 <script>
-export default {}
+export default {
+	name: 'Category',
+	props: {
+		currentTab: {
+			type: String,
+			default: 'home'
+		}
+	},
+	emits: ['pageClick'],
+	methods: {
+		pageClick() {
+			this.$emit('pageClick', this.currentTab)
+		}
+	}
+}
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+h1 {
+	cursor: pointer;
+}
+</style>
