@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import Home from '@/15.3_/Home.vue'
+import Home from '@/15.3_Provide和Inject/Home.vue'
 import { computed } from 'vue'
 
 export default {
