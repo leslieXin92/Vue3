@@ -27,6 +27,11 @@
 			<h1>{{ slotProps.itemKey }} : {{ slotProps.itemValue }}</h1>
 		</template>
 	</scoped-slot>
+
+	<!-- 独占默认插槽的简写（没有其他具名插槽） -->
+	<scoped-slot :info="info" v-slot="slotProps">
+		<h1>{{ slotProps.itemKey }} : {{ slotProps.itemValue }}</h1>
+	</scoped-slot>
 </template>
 
 <script>
