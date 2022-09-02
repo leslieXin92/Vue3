@@ -7,6 +7,7 @@ import { createApp } from 'vue'
 // import App from './15.5_插槽/App.vue'
 // import App from './15.6_动态组件/App.vue'
 // import App from './15.7_keep-alive/App.vue'
-import App from './15.8_异步组件/App.vue'
+// import App from './15.8_异步组件/App.vue'
+import App from './15.9_组件的v-model/App.vue'
 
 createApp(App).mount('#app')
