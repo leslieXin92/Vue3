@@ -1,7 +1,18 @@
 <template>
 	<button @click="isShow = !isShow">show / hide</button>
 
-	<transition name="transition" mode="out-in" appear>
+	<!-- 使用钩子时，一般会添加 :css="false" 这个属性来让原本css失效 -->
+	<transition
+		name="transition"
+		mode="out-in"
+		appear
+		@before-enter="beforeEnter"
+		@enter="enter"
+		@after-enter="afterEnter"
+		@before-leave="beforeLeave"
+		@leave="leave"
+		@after-leave="afterLeave"
+	>
 		<h1 v-if="isShow">hello world</h1>
 		<h1 v-else>yahoo!</h1>
 	</transition>
@@ -13,6 +24,26 @@ export default {
 	data() {
 		return {
 			isShow: true
+		}
+	},
+	methods: {
+		beforeEnter() {
+			console.log('beforeEnter')
+		},
+		enter() {
+			console.log('enter')
+		},
+		afterEnter() {
+			console.log('afterEnter')
+		},
+		beforeLeave() {
+			console.log('beforeLeave')
+		},
+		leave() {
+			console.log('leave')
+		},
+		afterLeave() {
+			console.log('afterLeave')
 		}
 	}
 }
