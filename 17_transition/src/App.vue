@@ -1,6 +1,5 @@
 <template>
 	<button @click="isShow = !isShow">show / hide</button>
-
 	<!-- 使用钩子时，一般会添加 :css="false" 这个属性来让原本css失效 -->
 	<transition
 		name="transition"
@@ -16,6 +15,16 @@
 		<h1 v-if="isShow">hello world</h1>
 		<h1 v-else>yahoo!</h1>
 	</transition>
+
+	<hr />
+
+	<button @click="addNumber">add number</button>
+	<button @click="delNumber">del number</button>
+	<transition-group name="transitionGroup" tag="p">
+		<span v-for="item in numberList" :key="item">
+			{{ item }}
+		</span>
+	</transition-group>
 </template>
 
 <script>
@@ -23,7 +32,8 @@ export default {
 	name: 'App',
 	data() {
 		return {
-			isShow: true
+			isShow: true,
+			numberList: [1, 2, 3, 4, 5]
 		}
 	},
 	methods: {
@@ -44,6 +54,15 @@ export default {
 		},
 		afterLeave() {
 			console.log('afterLeave')
+		},
+		random() {
+			return Math.floor(Math.random() * this.numberList.length)
+		},
+		addNumber() {
+			this.numberList.splice(this.random(), 0, this.random())
+		},
+		delNumber() {
+			this.numberList.splice(this.random(), 1)
 		}
 	}
 }
@@ -63,5 +82,29 @@ export default {
 .transition-enter-active,
 .transition-leave-active {
 	transition: opacity 0.3s ease;
+}
+
+span {
+	display: inline-block;
+	margin: 0 5px;
+}
+
+.transitionGroup-enter-from,
+.transitionGroup-leave-to {
+	opacity: 0;
+	transform: translateY(30px);
+}
+
+.transitionGroup-enter-active,
+.transitionGroup-leave-active {
+	transition: all 1s ease;
+}
+
+.transitionGroup-leave-active {
+	position: absolute;
+}
+
+.transitionGroup-move {
+	transition: transform 1s ease;
 }
 </style>
