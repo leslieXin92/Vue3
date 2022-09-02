@@ -20,10 +20,10 @@
 
 	<button @click="addNumber">add number</button>
 	<button @click="delNumber">del number</button>
-	<transition-group name="transitionGroup" tag="p">
-		<span v-for="item in numberList" :key="item">
+	<transition-group name="transitionGroup" tag="div">
+		<h2 v-for="item in numberList" :key="item">
 			{{ item }}
-		</span>
+		</h2>
 	</transition-group>
 </template>
 
@@ -84,7 +84,7 @@ export default {
 	transition: opacity 0.3s ease;
 }
 
-span {
+h2 {
 	display: inline-block;
 	margin: 0 5px;
 }
