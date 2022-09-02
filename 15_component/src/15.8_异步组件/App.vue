@@ -1,6 +1,13 @@
 <template>
 	<home />
-	<async-category />
+	<suspense>
+		<template #default>
+			<async-category />
+		</template>
+		<template #fallback>
+			<h1>应急插槽</h1>
+		</template>
+	</suspense>
 </template>
 
 <script>
