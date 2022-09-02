@@ -1,5 +1,5 @@
 <template>
-	<input type="number" v-model.number="modelValue" @input="changeAge" />
+	<input type="number" :value="modelValue" @input="changeAge" />
 </template>
 
 <script>
@@ -11,7 +11,7 @@ export default {
 	emits: ['update:modelValue'],
 	methods: {
 		changeAge(e) {
-			this.$emit('update:modelValue', this.modelValue)
+			this.$emit('update:modelValue', Number(e.target.value ))
 		}
 	}
 }
