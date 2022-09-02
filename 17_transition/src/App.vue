@@ -1,8 +1,9 @@
 <template>
 	<button @click="isShow = !isShow">show / hide</button>
 
-	<transition name="transition">
+	<transition name="transition" mode="out-in" appear>
 		<h1 v-if="isShow">hello world</h1>
+		<h1 v-else>yahoo!</h1>
 	</transition>
 </template>
 
