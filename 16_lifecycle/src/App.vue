@@ -1,6 +1,12 @@
 <template>
-	<home v-if="showHome" />
-	<button @click="showHome = !showHome">unmount Home</button>
+	<template v-if="!unmount">
+		<keep-alive>
+			<home v-if="activated" />
+		</keep-alive>
+	</template>
+
+	<button @click="unmount = !unmount">unmount Home</button>
+	<button @click="activated = !activated">deactivated Home</button>
 </template>
 
 <script>
@@ -11,7 +17,8 @@ export default {
 	components: { Home },
 	data() {
 		return {
-			showHome: true
+			unmount: false,
+			activated: true
 		}
 	}
 }

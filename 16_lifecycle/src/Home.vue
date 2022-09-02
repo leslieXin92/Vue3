@@ -31,6 +31,12 @@ export default {
 	unmounted() {
 		console.log('---- unmounted')
 	},
+	activated() {
+		console.log('---- activated')
+	},
+	deactivated() {
+		console.log('---- deactivated')
+	},
 	data() {
 		return {
 			name: 'leslie',
