@@ -1,22 +1,23 @@
 <template>
+	<input type="text" v-model="name" />
 	<input type="number" :value="modelValue" @input="changeAge" />
-	<input type="number" v-model="age" />
 </template>
 
 <script>
 export default {
 	name: 'Age',
 	props: {
-		modelValue: Number
+		modelValue: Number,
+		modelName: String
 	},
-	emits: ['update:modelValue'],
+	emits: ['update:modelValue', 'update:modelName'],
 	computed: {
-		age: {
+		name: {
 			get() {
-				return this.modelValue
+				return this.modelName
 			},
 			set(value) {
-				this.$emit('update:modelValue', value)
+				this.$emit('update:modelName', value)
 			}
 		}
 	},
