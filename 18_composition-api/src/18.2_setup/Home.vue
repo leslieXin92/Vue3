@@ -1,9 +1,12 @@
 <template>
 	<h1>name: {{ name }}</h1>
-	<h1>age: {{ age }}</h1>
+	<h1>age: {{ state.age }}</h1>
+	<button @click="incrementAge">age++</button>
 </template>
 
 <script>
+import { reactive } from 'vue'
+
 export default {
 	name: 'Home',
 	props: {
@@ -15,12 +18,14 @@ export default {
 		console.log('emit', emit) // 传过来的自定义事件
 		console.log('slots', slots) // 插槽
 
-		let age = 23
+		const state = reactive({
+			age: 23
+		})
 		const incrementAge = () => {
-			age++
+			state.age++
 		}
 
-		return { age, incrementAge }
+		return { state, incrementAge }
 	}
 }
 </script>
