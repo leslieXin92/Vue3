@@ -1,5 +1,5 @@
 <template>
-	<home msg="hello world"  />
+	<home name="leslie" msg="hello world" />
 </template>
 
 <script>
