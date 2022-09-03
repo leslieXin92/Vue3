@@ -1,13 +1,18 @@
 <template>
-	<home name="leslie" msg="hello world" />
+	<Ref_Reactive name="leslie" msg="hello world" />
+
+	<hr />
+
+	<computed />
 </template>
 
 <script>
-import Home from './Home.vue'
+import Ref_Reactive from './Ref_Reactive.vue'
+import Computed from './Computed.vue'
 
 export default {
 	name: 'App',
-	components: { Home }
+	components: { Ref_Reactive, Computed }
 }
 </script>
 

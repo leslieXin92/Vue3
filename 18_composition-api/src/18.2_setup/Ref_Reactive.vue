@@ -50,7 +50,7 @@ import { reactive, ref, readonly, shallowReactive, toRefs, toRef } from 'vue'
 import { useDebouncedRef } from './hook/useDebouncedRef'
 
 export default {
-	name: 'Home',
+	name: 'Ref_Reactive',
 	props: {
 		name: String
 		// msg: String
