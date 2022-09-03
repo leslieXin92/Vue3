@@ -7,17 +7,19 @@
 
 	<hr />
 
-	<watch />
+	<watch-effect />
+
+	<hr />
 </template>
 
 <script>
 import Ref_Reactive from './Ref_Reactive.vue'
 import Computed from './Computed.vue'
-import Watch from './Watch.vue'
+import WatchEffect from './WatchEffect.vue'
 
 export default {
 	name: 'App',
-	components: { Ref_Reactive, Computed, Watch }
+	components: { Ref_Reactive, Computed, WatchEffect }
 }
 </script>
 

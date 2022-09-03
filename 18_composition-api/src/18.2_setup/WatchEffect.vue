@@ -1,16 +1,16 @@
 <template>
 	<h1>name: {{ name }}</h1>
 	<h1>age: {{ age }}</h1>
-	<h1 ref="yahoo">yahoo</h1>
+	<h1 ref="yahooRef">yahoo</h1>
 	<button @click="changeName">changeName</button>
 	<button @click="incrementAge">incrementAge</button>
 </template>
 
 <script>
-import { ref, watchEffect, watch } from 'vue'
+import { ref, watchEffect } from 'vue'
 
 export default {
-	name: 'Watch',
+	name: 'WatchEffect',
 	setup() {
 		const name = ref('leslie')
 		const age = ref(24)
@@ -23,8 +23,8 @@ export default {
 		}
 
 		// watchEffect：自动收集依赖 并 立即调用
-		// onInvalidate 为 watchEffect清除副作用
 		watchEffect(
+			// onInvalidate 为 watchEffect清除副作用
 			onInvalidate => {
 				const timer = setTimeout(() => {
 					console.log('请求成功')
@@ -48,10 +48,10 @@ export default {
 		})
 
 		// watchEffect触发时机
-		const yahoo = ref(null)
+		const yahooRef = ref(null)
 		watchEffect(
 			() => {
-				console.log('yahoo', yahoo.value)
+				console.log('yahooRef', yahooRef.value)
 			},
 			{
 				flush: 'post' // dom构建后再监听
@@ -61,7 +61,7 @@ export default {
 		return {
 			name,
 			age,
-			yahoo,
+			yahooRef,
 			changeName,
 			incrementAge
 		}
