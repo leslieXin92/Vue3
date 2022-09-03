@@ -1,16 +1,19 @@
 <template>
+	<!-- reactive -->
 	<h1>name: {{ name }}</h1>
 	<h1>age: {{ state.age }}</h1>
 	<button @click="incrementAge">age++</button>
 
 	<hr />
 
+	<!-- ref -->
 	<h1>counter: {{ counter }}</h1>
 	<button @click="incrementCounter">counter++</button>
 	<button @click="decrementCounter">counter--</button>
 
 	<hr />
 
+	<!-- readonly -->
 	<h1>readonlyMsg: {{ readonlyInfo.readonlyMsg }}</h1>
 	<button @click="changeReadonlyMsg">change readonlyMsg</button>
 </template>
