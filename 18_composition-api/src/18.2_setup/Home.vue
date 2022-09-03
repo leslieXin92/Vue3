@@ -16,10 +16,17 @@
 	<!-- readonly -->
 	<h1>readonlyMsg: {{ readonlyInfo.readonlyMsg }}</h1>
 	<button @click="changeReadonlyMsg">change readonlyMsg</button>
+
+	<hr />
+
+	<!-- shallowReactive -->
+	<h1>shallowReactiveInfo: {{ shallowReactiveInfo }}</h1>
+	<button @click="incrementShallow">incrementShallow</button>
+	<button @click="incrementDeep">incrementDeep</button>
 </template>
 
 <script>
-import { reactive, ref, readonly } from 'vue'
+import { reactive, ref, readonly, shallowReactive } from 'vue'
 
 export default {
 	name: 'Home',
@@ -56,14 +63,31 @@ export default {
 			readonlyInfo.readonlyMsg += '!'
 		}
 
+		// shallowReactive
+		const shallowReactiveInfo = shallowReactive({
+			shallow: 1,
+			deep: {
+				num: 1
+			}
+		})
+		const incrementShallow = () => {
+			shallowReactiveInfo.shallow++
+		}
+		const incrementDeep = () => {
+			shallowReactiveInfo.deep.num++
+		}
+
 		return {
 			state,
 			counter,
 			readonlyInfo,
+			shallowReactiveInfo,
 			incrementAge,
 			incrementCounter,
 			decrementCounter,
-			changeReadonlyMsg
+			changeReadonlyMsg,
+			incrementShallow,
+			incrementDeep
 		}
 	}
 }
