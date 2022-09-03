@@ -2,15 +2,19 @@
 	<h1>name: {{ name }}</h1>
 	<h1>age: {{ state.age }}</h1>
 	<button @click="incrementAge">age++</button>
+	<h1>counter: {{ counter }}</h1>
+	<button @click="incrementCounter">counter++</button>
+	<button @click="decrementCounter">counter--</button>
 </template>
 
 <script>
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 
 export default {
 	name: 'Home',
 	props: {
-		name: String
+		name: String,
+		// msg: String
 	},
 	setup(props, { attrs, emit, slots }) {
 		console.log('props', props) // 传过来的参数，并props中声明了
@@ -25,7 +29,15 @@ export default {
 			state.age++
 		}
 
-		return { state, incrementAge }
+		let counter = ref(100)
+		const incrementCounter = () => {
+			counter.value++
+		}
+		const decrementCounter = () => {
+			counter.value--
+		}
+
+		return { state, counter, incrementAge, incrementCounter, decrementCounter }
 	}
 }
 </script>
