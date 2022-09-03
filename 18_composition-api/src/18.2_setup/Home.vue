@@ -37,10 +37,17 @@
 	<h1>toRefName: {{ toRefName }}</h1>
 	<h1>toRefAge: {{ toRefAge }}</h1>
 	<button @click="incrementToRefAge">toRefAge++</button>
+
+	<hr />
+
+	<!-- customRef -->
+	<h1>{{ queryKeyword }}</h1>
+	<input type="text" v-model="queryKeyword" />
 </template>
 
 <script>
 import { reactive, ref, readonly, shallowReactive, toRefs, toRef } from 'vue'
+import { useDebouncedRef } from './hook/useDebouncedRef'
 
 export default {
 	name: 'Home',
@@ -112,6 +119,9 @@ export default {
 			toRefAge.value++
 		}
 
+		// customRef
+		const queryKeyword = useDebouncedRef('queryKeyword')
+
 		return {
 			state,
 			counter,
@@ -121,6 +131,7 @@ export default {
 			toRefsAge,
 			toRefName,
 			toRefAge,
+			queryKeyword,
 			incrementAge,
 			incrementCounter,
 			decrementCounter,
