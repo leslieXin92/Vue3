@@ -13,13 +13,32 @@ export default {
 	setup() {
 		const name = ref('leslie')
 		const age = ref(24)
-		const changeName = () => (name.value += '!')
-		const incrementAge = () => age.value++
+		const changeName = () => {
+			name.value += '!'
+		}
+		const incrementAge = () => {
+			age.value++
+			if (age.value > 30) stopAgeWatchEffect()
+		}
 
 		// watchEffect：自动收集依赖 并 立即调用
-		watchEffect(() => {
-			console.log('name', name.value)
-			console.log('age', age.value)
+		// onInvalidate 为 watchEffect清除副作用
+		watchEffect(onInvalidate => {
+			const timer = setTimeout(() => {
+				console.log('请求成功')
+			}, 3000)
+			// 根据监听对象(name)发请求
+			onInvalidate(() => {
+				// 清除额外的副作用
+				clearTimeout(timer)
+				console.log('上次请求取消，开始下次请求')
+			})
+			console.log('name变了', name.value)
+		})
+
+		// watchEffect停止侦听
+		const stopAgeWatchEffect = watchEffect(() => {
+			console.log('age变了', age.value)
 		})
 
 		return {
