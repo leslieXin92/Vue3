@@ -23,10 +23,24 @@
 	<h1>shallowReactiveInfo: {{ shallowReactiveInfo }}</h1>
 	<button @click="incrementShallow">incrementShallow</button>
 	<button @click="incrementDeep">incrementDeep</button>
+
+	<hr />
+
+	<!-- toRefs  -->
+	<h1>toRefsName: {{ toRefsName }}</h1>
+	<h1>toRefsAge: {{ toRefsAge }}</h1>
+	<button @click="incrementToRefsAge">toRefsAge++</button>
+
+	<hr />
+
+	<!-- toRef  -->
+	<h1>toRefName: {{ toRefName }}</h1>
+	<h1>toRefAge: {{ toRefAge }}</h1>
+	<button @click="incrementToRefAge">toRefAge++</button>
 </template>
 
 <script>
-import { reactive, ref, readonly, shallowReactive } from 'vue'
+import { reactive, ref, readonly, shallowReactive, toRefs, toRef } from 'vue'
 
 export default {
 	name: 'Home',
@@ -77,17 +91,44 @@ export default {
 			shallowReactiveInfo.deep.num++
 		}
 
+		// toRefs
+		const toRefsInfo = reactive({
+			toRefsName: 'cabbage',
+			toRefsAge: 23
+		})
+		let { toRefsName, toRefsAge } = toRefs(toRefsInfo)
+		const incrementToRefsAge = () => {
+			toRefsAge.value++
+		}
+
+		// toRef
+		const toRefInfo = reactive({
+			toRefName: 'cabbage',
+			toRefAge: 23
+		})
+		const toRefName = toRef(toRefInfo, 'toRefName')
+		const toRefAge = toRef(toRefInfo, 'toRefAge')
+		const incrementToRefAge = () => {
+			toRefAge.value++
+		}
+
 		return {
 			state,
 			counter,
 			readonlyInfo,
 			shallowReactiveInfo,
+			toRefsName,
+			toRefsAge,
+			toRefName,
+			toRefAge,
 			incrementAge,
 			incrementCounter,
 			decrementCounter,
 			changeReadonlyMsg,
 			incrementShallow,
-			incrementDeep
+			incrementDeep,
+			incrementToRefsAge,
+			incrementToRefAge
 		}
 	}
 }
