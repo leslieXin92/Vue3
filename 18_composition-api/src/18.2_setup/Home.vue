@@ -2,18 +2,26 @@
 	<h1>name: {{ name }}</h1>
 	<h1>age: {{ state.age }}</h1>
 	<button @click="incrementAge">age++</button>
+
+	<hr />
+
 	<h1>counter: {{ counter }}</h1>
 	<button @click="incrementCounter">counter++</button>
 	<button @click="decrementCounter">counter--</button>
+
+	<hr />
+
+	<h1>readonlyMsg: {{ readonlyInfo.readonlyMsg }}</h1>
+	<button @click="changeReadonlyMsg">change readonlyMsg</button>
 </template>
 
 <script>
-import { reactive, ref } from 'vue'
+import { reactive, ref, readonly } from 'vue'
 
 export default {
 	name: 'Home',
 	props: {
-		name: String,
+		name: String
 		// msg: String
 	},
 	setup(props, { attrs, emit, slots }) {
@@ -22,6 +30,7 @@ export default {
 		console.log('emit', emit) // 传过来的自定义事件
 		console.log('slots', slots) // 插槽
 
+		// reactive
 		const state = reactive({
 			age: 23
 		})
@@ -29,7 +38,8 @@ export default {
 			state.age++
 		}
 
-		let counter = ref(100)
+		// ref
+		const counter = ref(100)
 		const incrementCounter = () => {
 			counter.value++
 		}
@@ -37,7 +47,21 @@ export default {
 			counter.value--
 		}
 
-		return { state, counter, incrementAge, incrementCounter, decrementCounter }
+		// readonly
+		const readonlyInfo = readonly({ readonlyMsg: 'hello world' })
+		const changeReadonlyMsg = () => {
+			readonlyInfo.readonlyMsg += '!'
+		}
+
+		return {
+			state,
+			counter,
+			readonlyInfo,
+			incrementAge,
+			incrementCounter,
+			decrementCounter,
+			changeReadonlyMsg
+		}
 	}
 }
 </script>
