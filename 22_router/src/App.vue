@@ -1,7 +1,7 @@
 <template>
-	<router-link to="/home"> home </router-link>
-	<router-link to="/about"> about </router-link>
-  
+	<router-link to="/home" replace active-class="active"> home </router-link>
+	<router-link to="/about" replace active-class="active"> about </router-link>
+
 	<router-view />
 </template>
 
@@ -12,3 +12,9 @@ export default {
 	}
 }
 </script>
+
+<style scoped>
+.active {
+	color: red;
+}
+</style>
