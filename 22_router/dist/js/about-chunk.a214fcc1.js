@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunk_12_vue_cli"]=self["webpackChunk_12_vue_cli"]||[]).push([[793],{1868:function(u,n,e){e.r(n),e.d(n,{default:function(){return l}});var r=e(3396);function t(u,n,e,t,a,c){return(0,r.wg)(),(0,r.iD)("h1",null,"about")}var a={name:"about"},c=e(89);const i=(0,c.Z)(a,[["render",t]]);var l=i}}]);
+//# sourceMappingURL=about-chunk.a214fcc1.js.map
