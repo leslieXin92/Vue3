@@ -4,7 +4,13 @@
 	<router-link :to="`/user/${username}`" replace active-class="active"> user </router-link>
 	<button @click="skipLover">lover</button>
 
-	<router-view />
+	<router-view v-slot="props">
+		<transition>
+			<keep-alive>
+				<component :is="props.Component" />
+			</keep-alive>
+		</transition>
+	</router-view>
 </template>
 
 <script>
