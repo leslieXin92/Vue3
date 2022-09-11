@@ -49,4 +49,11 @@ const router = createRouter({
 	history: createWebHashHistory()
 })
 
+// 动态添加路由
+const asyncRoutes = {
+	path: '/category',
+	component: () => import('@/views/Category.vue')
+}
+router.addRoute(asyncRoutes)
+
 export default router
