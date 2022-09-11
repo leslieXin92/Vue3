@@ -56,4 +56,13 @@ const asyncRoutes = {
 }
 router.addRoute(asyncRoutes)
 
+// 导航守卫
+let counter = 0
+router.beforeEach((to, from) => {
+	// to: 即将跳转到的route对象
+	// from: 从哪个路由对象跳转的
+	// 返回值: false-不进行导航; undefined-默认导航; string-跳转string; 对象-跳转route对象
+	console.log(`跳转了 ${++counter} 次`)
+})
+
 export default router
