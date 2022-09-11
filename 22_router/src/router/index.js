@@ -8,16 +8,26 @@ const routes = [
 	{
 		path: '/home',
 		name: 'home',
-		component: () => import(/* webpackChunkName: 'home-chunk' */ '@/views/Home.vue'),
-		mate: {
-			name: 'leslie',
-			age: 24
-		}
+		component: () => import(/* webpackChunkName: 'home-chunk' */ '@/views/Home.vue')
 	},
 	{
 		path: '/about',
 		name: '/about',
-		component: () => import(/* webpackChunkName: 'about-chunk' */ '@/views/About.vue')
+		component: () => import(/* webpackChunkName: 'about-chunk' */ '@/views/About.vue'),
+		mate: {
+			name: 'leslie',
+			age: 24
+		},
+		children: [
+			{
+				path: 'name',
+				component: () => import('@/views/Name.vue')
+			},
+			{
+				path: 'age',
+				component: () => import('@/views/Age.vue')
+			}
+		]
 	},
 	{
 		path: '/user/:username',
