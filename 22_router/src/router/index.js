@@ -23,6 +23,10 @@ const routes = [
 		path: '/user/:username',
 		name: '/user',
 		component: () => import('@/views/User.vue')
+	},
+	{
+		path: '/:pathMatch(.*)',
+		component: () => import('@/views/NotFound')
 	}
 ]
 
