@@ -3,10 +3,14 @@
 	<h1>name: {{ name }}</h1>
 	<h1>age: {{ age }}</h1>
 	<h1>counter: {{ counter }}</h1>
+	<h1>gettersName: {{ gettersName }}</h1>
+	<h1>gettersAge: {{ gettersAge }}</h1>
+	<h1>totalPrice: {{ totalPrice }}</h1>
 </template>
 
 <script>
 import { useState } from '@/hooks/useState'
+import { useGetters } from '@/hooks/useGetters'
 
 export default {
 	setup() {
@@ -21,7 +25,9 @@ export default {
 		// 更牛批的封装：把嘎嘎牛批的方式封装进hook
 		const storeState = useState(['name', 'age', 'counter'])
 
-		return { ...storeState }
+		const storeGetters = useGetters(['totalPrice', 'gettersName', 'gettersAge'])
+
+		return { ...storeState, ...storeGetters }
 	}
 }
 </script>

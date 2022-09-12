@@ -29,6 +29,12 @@ const store = createStore({
 		},
 		totalPrice(state, getters) {
 			return state.books.map(item => item.price * item.count).reduce((pre, cur) => pre + cur, 0) * getters.curDiscount
+		},
+		gettersName(state) {
+			return `${state.name}!`
+		},
+		gettersAge(state) {
+			return state.age + 1
 		}
 	}
 })
