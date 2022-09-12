@@ -10,5 +10,3 @@ export default {
 	components: { HomeContent }
 }
 </script>
-
-<style lang="scss" scoped></style>

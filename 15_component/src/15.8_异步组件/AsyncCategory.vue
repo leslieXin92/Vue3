@@ -7,5 +7,3 @@ export default {
 	name: 'AsyncCategory'
 }
 </script>
-
-<style lang="scss" scoped></style>

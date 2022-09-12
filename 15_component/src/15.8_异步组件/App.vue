@@ -19,5 +19,3 @@ export default {
 	components: { Home, AsyncCategory }
 }
 </script>
-
-<style lang="scss" scoped></style>

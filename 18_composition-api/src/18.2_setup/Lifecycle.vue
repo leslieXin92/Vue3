@@ -3,14 +3,7 @@
 </template>
 
 <script>
-import {
-	onBeforeMount,
-	onMounted,
-	onBeforeUpdate,
-	onUpdated,
-	onBeforeUnmount,
-	onUnmounted
-} from 'vue'
+import { onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onBeforeUnmount, onUnmounted } from 'vue'
 
 export default {
 	name: 'lifecycle',
@@ -40,5 +33,3 @@ export default {
 	}
 }
 </script>
-
-<style lang="scss" scoped></style>

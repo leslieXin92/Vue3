@@ -9,5 +9,3 @@ export default {
 	inject: ['name', 'age']
 }
 </script>
-
-<style lang="scss" scoped></style>
