@@ -21,6 +21,12 @@ const store = createStore({
 		},
 		decrement(state) {
 			state.counter--
+		},
+		incrementN(state, payload) {
+			state.counter += payload
+		},
+		decrementN(state, payload) {
+			state.counter -= payload
 		}
 	},
 	getters: {
