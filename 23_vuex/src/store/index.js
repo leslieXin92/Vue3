@@ -15,6 +15,14 @@ const store = createStore({
 			discount: 0.75
 		}
 	},
+	actions: {
+		incrementFn(context) {
+			context.commit('increment')
+		},
+		decrementFn(context) {
+			context.commit('decrement')
+		}
+	},
 	mutations: {
 		increment(state) {
 			state.counter++

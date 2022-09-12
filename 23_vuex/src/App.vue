@@ -7,6 +7,8 @@
 	<button @click="decrement">decrement--</button>
 	<button @click="incrementN">counter+10</button>
 	<button @click="decrementN">decrement-10</button>
+	<button @click="actionIncrement">action counter++</button>
+	<button @click="actionDecrement">action decrement--</button>
 	<h1>gettersName: {{ gettersName }}</h1>
 	<h1>gettersAge: {{ gettersAge }}</h1>
 	<h1>totalPrice: {{ totalPrice }}</h1>
@@ -42,7 +44,22 @@ export default {
 		}
 		const storeMutations = mapMutations(['increment', 'decrement'])
 
-		return { ...storeState, ...storeGetters, incrementN, decrementN, ...storeMutations }
+		const actionIncrement = () => {
+			store.dispatch('incrementFn')
+		}
+		const actionDecrement = () => {
+			store.dispatch('decrementFn')
+		}
+
+		return {
+			...storeState,
+			...storeGetters,
+			incrementN,
+			decrementN,
+			...storeMutations,
+			actionIncrement,
+			actionDecrement
+		}
 	}
 }
 </script>
