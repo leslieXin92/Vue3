@@ -32,14 +32,15 @@ export default {
 
 		const storeGetters = useGetters(['totalPrice', 'gettersName', 'gettersAge'])
 
-		const increment = () => {
-			store.commit('increment')
-		}
-		const decrement = () => {
-			store.commit('decrement')
-		}
+		// const increment = () => {
+		// 	store.commit('increment')
+		// }
+		// const decrement = () => {
+		// 	store.commit('decrement')
+		// }
+		const storeMutations = mapMutations(['increment', 'decrement'])
 
-		return { ...storeState, ...storeGetters, increment }
+		return { ...storeState, ...storeGetters, ...storeMutations }
 	}
 }
 </script>
